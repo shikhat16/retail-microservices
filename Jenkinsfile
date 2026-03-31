@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'maven'
+            inheritFrom 'maven-agent'
             defaultContainer 'maven'
         }
     }
