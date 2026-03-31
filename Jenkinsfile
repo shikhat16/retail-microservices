@@ -1,9 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label 'maven'
+            defaultContainer 'maven'
+        }
+    }
     stages {
-        stage('Echo Test') {
+        stage('Build') {
             steps {
-                echo 'Pipeline is running correctly!'
+                sh 'mvn clean install'
             }
         }
     }
